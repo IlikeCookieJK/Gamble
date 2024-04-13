@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <meta charset="utf-8">
+  <title>ZingGrid: Blank Grid</title>
+  <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    .chart--container {
+      height: 100%;
+      width: 100%;
+      min-height: 150px;
+    }
+ 
+    .zc-ref {
+      display: none;
+    }
+  </style>
+</head>
+ 
+<body>
+  <!-- CHART CONTAINER -->
+  <div id="myChart" class="chart--container">
+    <a class="zc-ref" href="https://www.zingchart.com">Powered by ZingChart</a>
+  </div>
+  <script>
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"]; // window:load event for Javascript to run after HTML
+    // because this Javascript is injected into the document head
+    window.addEventListener('load', () => {
+      // Javascript code to execute after DOM content
+ 
+      // full ZingChart schema can be found here:
+      // https://www.zingchart.com/docs/api/json-configuration/
+      const myConfig = {
+        type: 'pie',
+        theme: 'dark',
+        globals: {
+          fontSize: 14
+        },
+        title: {
+          text: 'A Simple Pie Chart',
+          fontSize: 24,
+          // will force margin and padding on title
+          // adjustLayout: true
+        },
+        legend: {
+          draggable: true,
+          // will force margin and padding on legen d
+          // adjustLayout: true
+        },
+        scaleR: {},
+        // plot represents general series, or plots, styling
+        plot: {
+          // hoverstate
+          tooltip: {
+            // turn individual point tooltip off
+            // visible: false,
+            padding: '10 15',
+            borderRadius: 3,
+            // % symbol represents a token to insert a value. Full list here:
+            // https://www.zingchart.com/docs/tutorials/chart-elements/zingchart-tokens/
+            text: '%plot-text %kl was %v (&deg;F)',
+            // htmlMode renders text attribute as html so
+            // &deg; is rendered
+            htmlMode: true,
+          },
+          // animation docs here:
+          // https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
+          animation: {
+            effect: 'ANIMATION_EXPAND_BOTTOM',
+            method: 'ANIMATION_STRONG_EASE_OUT',
+            sequence: 'ANIMATION_BY_PLOT',
+            speed: 275,
+          }
+        },
+        series: [{
+            // plot values
+            values: [23],
+            backgroundColor: '#ff4081',
+            text: 'Day 1',
+          },
+          {
+            // plot values
+            values: [20],
+            backgroundColor: '#e040fb',
+            text: 'Day 2'
+          },
+          {
+            // plot values
+            values: [25],
+            backgroundColor: '#448aff',
+            text: 'Day 3'
+          },
+          {
+            // plot values
+            values: [25],
+            backgroundColor: '#ff5252',
+            text: 'Day 4'
+          },
+          {
+            // plot values
+            values: [25],
+            backgroundColor: '#ff6e40',
+            text: 'Day 5'
+          },
+          {
+            // plot values
+            values: [25],
+            backgroundColor: '#69f0ae',
+            text: 'Day 6'
+          },
+          {
+            // plot values
+            values: [25],
+            backgroundColor: '#7c4dff',
+            text: 'Day 7'
+          }
+        ]
+      };
+ 
+      // render chart with width and height to
+      // fill the parent container CSS dimensions
+      zingchart.render({
+        id: 'myChart',
+        data: myConfig,
+        height: '100%',
+        width: '100%'
+      });
+    });
+  </script>
+</body>
+ 
+</html>

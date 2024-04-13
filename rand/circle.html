@@ -1,0 +1,67 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="circle.js"></script>
+</head>
+<body>
+    <canvas id="pie-chart"></canvas>
+<script>
+    var ctx = document.getElementById('pie-chart').getContext('2d');
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+                data: [12, 19, 3],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        }
+    });
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pie chart</title>
+</head>
+<body>
+    <h1 class="heading">Food consumption in a city</h1>
+    <div class="wrapper">
+        <div class="pie-wrap"></div>
+        <div class="key-wrap"></div>
+    </div>
+    <canvas id="myPieChart" width="300" height="300"></canvas>
+<script>
+    const canvas = document.getElementById('myPieChart');
+    const ctx = canvas.getContext('2d');
+
+    // Example data (percentages)
+    const data = [30, 40, 20, 10];
+    const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'];
+
+    const total = data.reduce((sum, value) => sum + value, 0);
+    let startAngle = 0;
+
+    for (let i = 0; i < data.length; i++) {
+        const sliceAngle = (2 * Math.PI * data[i]) / total;
+        ctx.fillStyle = colors[i];
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, canvas.height / 2);
+        ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 3, startAngle, startAngle + sliceAngle);
+        ctx.lineTo(canvas.width / 2, canvas.height / 2);
+        ctx.fill();
+        startAngle += sliceAngle;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Three.js Demo</title>
+        <style>
+            body { margin: 0;}
+            #myCanvas { width: 90vw; height: 90vh; }
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas"></canvas>
+        <script type="module">
+            import * as THREE from 'https://threejs.org/build/three.module.js';
+
+            // Get a reference to the canvas
+            const canvas = document.querySelector('#myCanvas');
+
+            // Create a scene
+            const scene = new THREE.Scene();
+
+            // Create a box geometry and a material
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+            // Combine them into a mesh
+            const cube = new THREE.Mesh(geometry, material);
+
+            // Add the cube to the scene
+            scene.add(cube);
+
+            // Create a camera
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // Create a renderer
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+            document.getElementById('myCanvas').removeAttribute('style');
+        </script>
+    </body>
+</html>

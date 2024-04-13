@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    width: 70vw;
+    color: white;
+    background-color: rgb(70, 23, 23);
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+div{
+    width: 100vw;
+    height: 100vh;
+}
